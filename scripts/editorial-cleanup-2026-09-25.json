@@ -1,0 +1,390 @@
+[
+  {
+    "type": "Settings",
+    "filter": {
+      "key": "main"
+    },
+    "changes": {
+      "tagline": "Grooming with custom scents and a sense of humor."
+    },
+    "expected": {
+      "tagline": "Men's grooming. Custom scents. An irreverent attitude."
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "home"
+    },
+    "changes": {
+      "seo": {
+        "title": "Dagger & Bone Apothecary | Men's Hair, Skin & Body Care",
+        "description": "Explore Dagger & Bone Apothecary's seven planned grooming products, three custom scents, and Kickstarter founding rewards."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Dagger & Bone Apothecary | Men's Hair, Skin & Body Care",
+        "description": "Men's grooming with custom scents and an irreverent attitude. Meet the seven planned Dagger & Bone Apothecary products and follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "products"
+    },
+    "changes": {
+      "intro": "We're developing seven products across three custom scents.",
+      "seo": {
+        "title": "The Collection | Dagger & Bone Apothecary",
+        "description": "Explore the first Dagger & Bone collection: Mordant shampoo, conditioner and bar soap; Cordovan body wash and lotions; and Flint cologne. All are in development."
+      }
+    },
+    "expected": {
+      "intro": "Seven products. Three opening scents.",
+      "seo": {
+        "title": "The Collection | Dagger & Bone Apothecary",
+        "description": "Meet the seven planned products: Mordant shampoo, conditioner and bar soap; Cordovan body wash, hand and body lotions; and Flint cologne."
+      }
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "scents"
+    },
+    "changes": {
+      "intro": "Cordovan, Mordant, and Flint are the three custom scents in our first collection.",
+      "seo": {
+        "title": "Scent Guide | Dagger & Bone Apothecary",
+        "description": "Meet Cordovan, Mordant, and Flint, the three custom scents in the first Dagger & Bone Apothecary collection, and see their associated products."
+      }
+    },
+    "expected": {
+      "intro": "The first three scents in the Dagger & Bone collection.",
+      "seo": {
+        "title": "Find Your Scent | Dagger & Bone Apothecary",
+        "description": "Explore Cordovan, Mordant, and Flint, the opening Dagger & Bone Apothecary scents, and the products planned for each."
+      }
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "about"
+    },
+    "changes": {
+      "intro": "We're Dagger & Bone Apothecary, a men's hair, skin, and body-care brand based in St. Augustine, Florida. Josh, our founder, is developing our first collection.",
+      "body": "We think grooming should leave you free to be yourself. Taking care of your hair and skin, or choosing a scent you like, shouldn't come with a lecture about what makes you a man.\n\nNobody needs to prove anything to a bottle of conditioner.",
+      "seo": {
+        "title": "About | Dagger & Bone Apothecary",
+        "description": "Meet Dagger & Bone Apothecary, the St. Augustine, Florida brand developing men's grooming products with custom scents and an irreverent sense of humor."
+      }
+    },
+    "expected": {
+      "intro": "Dagger & Bone Apothecary is a men's grooming brand based in St. Augustine, Florida. Founder Josh is developing the first collection around custom scents and a straightforward approach to looking after yourself.",
+      "body": "Somewhere along the way, men's grooming turned into another test of masculinity. We're making hair, skin, and body care.\n\nNobody needs to prove anything to a bottle of conditioner.",
+      "seo": {
+        "title": "About | Dagger & Bone Apothecary",
+        "description": "Men's grooming doesn't need a masculinity test. Dagger & Bone Apothecary brings custom scents and an irreverent attitude to hair, skin and body care."
+      }
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "kickstarter"
+    },
+    "changes": {
+      "intro": "We're preparing a Kickstarter campaign to support our first collection of men's hair, skin, and body care.",
+      "body": "Follow the prelaunch page on Kickstarter to get notified when the campaign opens. The date below is for the campaign launch; it is not a product delivery estimate."
+    },
+    "expected": {
+      "intro": "Seven planned products. Three opening scents. A chance to help create a soap of your own.",
+      "body": ""
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "contact"
+    },
+    "changes": {
+      "intro": "Have a question, a press inquiry, or a collaboration idea? Send us a message.",
+      "seo": {
+        "title": "Contact | Dagger & Bone Apothecary",
+        "description": "Send Dagger & Bone Apothecary a question, press inquiry, or collaboration idea using the contact form."
+      }
+    },
+    "expected": {
+      "intro": "Questions, press, or collaboration ideas? Send a message.",
+      "seo": {
+        "title": "Contact | Dagger & Bone Apothecary",
+        "description": "Contact Dagger & Bone Apothecary with questions about the collection, scents or Kickstarter founding rewards."
+      }
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "faq"
+    },
+    "changes": {
+      "intro": "The first collection is in development and isn't available to buy yet.",
+      "seo": {
+        "title": "FAQ | Dagger & Bone Apothecary",
+        "description": "Find answers about the first Dagger & Bone collection, product availability, the Kickstarter launch, and the limited-edition soap reward."
+      }
+    },
+    "expected": {
+      "intro": "Buying, scents, and the Kickstarter launch.",
+      "seo": {
+        "title": "FAQ | Dagger & Bone Apothecary",
+        "description": "Answers about product availability, the opening scents, the Kickstarter launch and the limited-edition soap reward from Dagger & Bone Apothecary."
+      }
+    }
+  },
+  {
+    "type": "Page",
+    "filter": {
+      "key": "signup"
+    },
+    "changes": {
+      "intro": "We'll email you when the Kickstarter launches and occasionally share news about the collection.",
+      "body": "This subscribes you to Dagger & Bone Apothecary emails. It does not follow the campaign on Kickstarter."
+    },
+    "expected": {
+      "intro": "We'll email you when the Kickstarter launches, plus occasional collection news.",
+      "body": "These are Dagger & Bone emails. Signing up here does not follow the campaign on Kickstarter."
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "mordant-shampoo"
+    },
+    "changes": {
+      "seo": {
+        "title": "Mordant Shampoo | Dagger & Bone Apothecary",
+        "description": "Mordant Shampoo is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Mordant Shampoo | Dagger & Bone Apothecary",
+        "description": "Mordant Shampoo is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "mordant-conditioner"
+    },
+    "changes": {
+      "seo": {
+        "title": "Mordant Conditioner | Dagger & Bone Apothecary",
+        "description": "Mordant Conditioner is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Mordant Conditioner | Dagger & Bone Apothecary",
+        "description": "Mordant Conditioner is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "mordant-bar-soap"
+    },
+    "changes": {
+      "seo": {
+        "title": "Mordant Bar Soap | Dagger & Bone Apothecary",
+        "description": "Mordant Bar Soap is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Mordant Bar Soap | Dagger & Bone Apothecary",
+        "description": "Mordant Bar Soap is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "cordovan-body-wash"
+    },
+    "changes": {
+      "seo": {
+        "title": "Cordovan Body Wash | Dagger & Bone Apothecary",
+        "description": "Cordovan Body Wash is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Cordovan Body Wash | Dagger & Bone Apothecary",
+        "description": "Cordovan Body Wash is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "cordovan-hand-lotion"
+    },
+    "changes": {
+      "seo": {
+        "title": "Cordovan Hand Lotion | Dagger & Bone Apothecary",
+        "description": "Cordovan Hand Lotion is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Cordovan Hand Lotion | Dagger & Bone Apothecary",
+        "description": "Cordovan Hand Lotion is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "cordovan-body-lotion"
+    },
+    "changes": {
+      "seo": {
+        "title": "Cordovan Body Lotion | Dagger & Bone Apothecary",
+        "description": "Cordovan Body Lotion is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Cordovan Body Lotion | Dagger & Bone Apothecary",
+        "description": "Cordovan Body Lotion is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Product",
+    "filter": {
+      "slug": "flint-cologne"
+    },
+    "changes": {
+      "seo": {
+        "title": "Flint Cologne | Dagger & Bone Apothecary",
+        "description": "Flint Cologne is in development for Dagger & Bone Apothecary's first collection of men's hair, skin, and body care."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Flint Cologne | Dagger & Bone Apothecary",
+        "description": "Flint Cologne is part of Dagger & Bone Apothecary's first collection. In development; follow the Kickstarter launch."
+      }
+    }
+  },
+  {
+    "type": "Scent",
+    "filter": {
+      "slug": "mordant"
+    },
+    "changes": {
+      "seo": {
+        "title": "Mordant Scent | Dagger & Bone Apothecary",
+        "description": "Mordant is the scent planned for shampoo, conditioner and bar soap in the first Dagger & Bone Apothecary collection."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Mordant Scent | Dagger & Bone Apothecary",
+        "description": "Mordant is the scent planned for shampoo, conditioner and bar soap in the opening Dagger & Bone Apothecary collection."
+      }
+    }
+  },
+  {
+    "type": "Scent",
+    "filter": {
+      "slug": "cordovan"
+    },
+    "changes": {
+      "seo": {
+        "title": "Cordovan Scent | Dagger & Bone Apothecary",
+        "description": "Cordovan is the scent planned for body wash, hand lotion and body lotion in the first Dagger & Bone Apothecary collection."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Cordovan Scent | Dagger & Bone Apothecary",
+        "description": "Cordovan is the scent planned for body wash, hand lotion and body lotion in the opening Dagger & Bone Apothecary collection."
+      }
+    }
+  },
+  {
+    "type": "Scent",
+    "filter": {
+      "slug": "flint"
+    },
+    "changes": {
+      "seo": {
+        "title": "Flint Scent | Dagger & Bone Apothecary",
+        "description": "Flint is the scent planned for cologne in the first Dagger & Bone Apothecary collection."
+      }
+    },
+    "expected": {
+      "seo": {
+        "title": "Flint Scent | Dagger & Bone Apothecary",
+        "description": "Flint is the scent planned for cologne in the opening Dagger & Bone Apothecary collection."
+      }
+    }
+  },
+  {
+    "type": "Reward",
+    "filter": {
+      "slug": "create-a-soap"
+    },
+    "changes": {
+      "body": "This is a founding reward for Kickstarter backers. Each edition contains six bars: one for its creator and five offered for sale."
+    },
+    "expected": {
+      "body": "Each edition contains six bars: one for its creator and five offered for sale."
+    }
+  },
+  {
+    "type": "FAQ",
+    "filter": {
+      "_id": "6ab425ed6b04533034c5ff8e"
+    },
+    "changes": {
+      "answer": "The planned campaign launch date is shown above. Follow the prelaunch page on Kickstarter to get notified when it opens. The campaign launch is separate from product delivery."
+    },
+    "expected": {
+      "answer": "The campaign launch is separate from product delivery. Follow the prelaunch page on Kickstarter to get notified when the campaign goes live."
+    }
+  },
+  {
+    "type": "FAQ",
+    "filter": {
+      "_id": "6ab425ed6b04533034c5ff8f"
+    },
+    "changes": {
+      "answer": "Cordovan is planned for body wash, hand lotion, and body lotion. Mordant is planned for shampoo, conditioner, and bar soap, and Flint for cologne. These are the first three scents; the collection isn't limited to them."
+    },
+    "expected": {
+      "answer": "Cordovan: body wash, hand lotion, and body lotion. Mordant: shampoo, conditioner, and bar soap. Flint: cologne. These are the opening scents; the collection isn't limited to them."
+    }
+  },
+  {
+    "type": "FAQ",
+    "filter": {
+      "_id": "6ab425ed6b04533034c5ff90"
+    },
+    "changes": {
+      "answer": "A backer who selects this founding reward helps create and name a limited-edition soap. Each edition contains six bars: one for its creator and five offered for sale."
+    },
+    "expected": {
+      "answer": "You help create and name a limited-edition soap. Each edition contains six bars: one for its creator and five offered for sale."
+    }
+  }
+]
