@@ -61,3 +61,22 @@ test('snapshot route projects published CMS records without private media fields
     for (const [Model, method, value] of original) Model[method] = value;
   }
 });
+
+test('public API serialization removes legacy private identity without changing the CMS record', () => {
+  const config = { frontendOrigin: 'http://localhost:3000', mongoUri: 'mongodb://unused', mongoDbName: 'unused',
+    sessionSecret: 'an-offline-unit-test-secret-with-no-real-session', brevo: {}, cloudinary: {} };
+  const app = createApp(config, { sessionStore: new session.MemoryStore(), brevo: {}, uploadImage: async () => ({}) });
+  const router = app._router.stack.find(layer => layer.name === 'router' && layer.regexp.test('/api/public')).handle;
+  const stored = { intro: "We're Dagger & Bone Apothecary, based in St. Augustine. Josh, our founder, is developing our first collection.",
+    seo: { description: 'Meet Joshua Bradford.' }, images: [{ alt: 'Portrait of Josh' }], title: 'About Dagger & Bone Apothecary' };
+  let sent;
+  const res = { json(payload) { sent = payload; return this; } };
+  router.stack[0].handle({}, res, () => {});
+  res.json(stored);
+  assert.equal(sent.intro, "We're Dagger & Bone Apothecary, based in St. Augustine. Our first collection is in development.");
+  assert.equal(sent.title, stored.title);
+  assert.equal(sent.seo.description, '');
+  assert.equal(sent.images[0].alt, '');
+  assert.match(stored.intro, /Josh/);
+  assert.doesNotMatch(JSON.stringify(sent), /\b(?:Josh(?:ua)?|Bradford)\b/i);
+});

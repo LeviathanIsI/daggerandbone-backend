@@ -4,6 +4,7 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'node:path';
 import { readConfig } from './config.js';
 import { FAQ, Page, Product, Reward, Scent, Settings } from './models.js';
+import { sanitizePublicText } from './public-identity.js';
 
 // Initial content only. Owner edits remain authoritative; editorial revisions
 // update existing records separately through the field-level CMS workflow.
@@ -174,7 +175,7 @@ const pages = [
     "slug": "/about",
     "eyebrow": "",
     "title": "Taking care of yourself shouldn't require a personality change.",
-    "intro": "We're Dagger & Bone Apothecary, a men's hair, skin, and body-care brand based in St. Augustine, Florida. Josh, our founder, is developing our first collection.",
+    "intro": "We're Dagger & Bone Apothecary, a men's hair, skin, and body-care brand based in St. Augustine, Florida. Our first collection is in development.",
     "body": "We think grooming should leave you free to be yourself. Taking care of your hair and skin, or choosing a scent you like, shouldn't come with a lecture about what makes you a man.\n\nNobody needs to prove anything to a bottle of conditioner.",
     "seo": {
       "title": "About | Dagger & Bone Apothecary",
@@ -266,12 +267,22 @@ const faqs = [
   }
 ];
 
+export async function cleanLegacyAboutIntro() {
+  const about = await Page.findOne({ key: 'about' }).select('_id intro').lean();
+  const safeIntro = about && sanitizePublicText(about.intro);
+  if (about && safeIntro && safeIntro !== about.intro) {
+    await Page.updateOne({ _id: about._id, intro: about.intro }, { $set: { intro: safeIntro } });
+  }
+}
+
 export async function seedDatabase() {
   await Settings.updateOne({ key: 'main' }, { $setOnInsert: settings }, { upsert: true });
   for (const scent of scents) await Scent.updateOne({ slug: scent.slug }, { $setOnInsert: { ...scent, status: 'published' } }, { upsert: true });
   const scentIds = Object.fromEntries((await Scent.find({ slug: { $in: scents.map(item => item.slug) } }).select('_id slug').lean()).map(item => [item.slug, item._id]));
   for (const product of products) await Product.updateOne({ slug: product.slug }, { $setOnInsert: { ...product, scent: scentIds[product.scent], status: 'published' } }, { upsert: true });
   for (const page of pages) await Page.updateOne({ key: page.key }, { $setOnInsert: { ...page, status: 'published' } }, { upsert: true });
+  // Update only the superseded About intro. Other CMS edits remain authoritative.
+  await cleanLegacyAboutIntro();
   for (const reward of rewards) await Reward.updateOne({ slug: reward.slug }, { $setOnInsert: { ...reward, status: 'published' } }, { upsert: true });
   // A CMS rewrite of a seeded question must not create a duplicate at startup.
   for (const faq of faqs) await FAQ.updateOne({ $or: [{ question: faq.question }, { order: faq.order }] }, { $setOnInsert: { ...faq, status: 'published' } }, { upsert: true });

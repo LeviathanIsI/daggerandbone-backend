@@ -14,6 +14,7 @@ import { createBrevoClient } from './integrations/brevo.js';
 import { createImageUploader, isAllowedImage } from './integrations/cloudinary.js';
 import { submitContact, subscribe, unsubscribe } from './services/forms.js';
 import { errorDetails } from './error-details.js';
+import { sanitizePublicCopy } from './public-identity.js';
 
 const asyncRoute = (handler) => (req, res, next) => Promise.resolve(handler(req, res, next)).catch(next);
 const idIsValid = (id) => mongoose.isValidObjectId(id);
@@ -49,10 +50,12 @@ function csvEscape(value) {
 
 export function createApp(config, overrides = {}) {
   const app = express();
-  if (process.env.TRUST_PROXY === '1') app.set('trust proxy', 1);
+  const allowedOrigins = config.frontendOrigins || [config.frontendOrigin].filter(Boolean);
+  const secureCookies = config.secureCookies ?? process.env.COOKIE_SECURE === '1';
+  if (config.trustProxy ?? process.env.TRUST_PROXY === '1') app.set('trust proxy', 1);
   app.disable('x-powered-by');
   app.use(helmet());
-  app.use(cors({ origin: config.frontendOrigin, credentials: true }));
+  app.use(cors({ origin: allowedOrigins, credentials: true }));
   app.use(express.json({ limit: '100kb' }));
   app.use('/api', (req, res, next) => { res.setHeader('Cache-Control', 'no-store'); next(); });
   const sessionStore = overrides.sessionStore || MongoStore.create({ mongoUrl: config.mongoUri, dbName: config.mongoDbName, collectionName: 'sessions', ttl: 7 * 24 * 60 * 60 });
@@ -62,7 +65,7 @@ export function createApp(config, overrides = {}) {
     store: sessionStore,
     resave: false,
     saveUninitialized: false,
-    cookie: { httpOnly: true, sameSite: 'lax', secure: process.env.COOKIE_SECURE === '1', maxAge: 7 * 24 * 60 * 60 * 1000 }
+    cookie: { httpOnly: true, sameSite: secureCookies ? 'none' : 'lax', secure: secureCookies, maxAge: 7 * 24 * 60 * 60 * 1000 }
   }));
   const brevo = overrides.brevo || createBrevoClient(config.brevo);
   const uploadImage = overrides.uploadImage || createImageUploader(config.cloudinary);
@@ -70,6 +73,11 @@ export function createApp(config, overrides = {}) {
   app.get('/api/health', (req, res) => res.json({ ok: true }));
 
   const publicRouter = express.Router();
+  publicRouter.use((req, res, next) => {
+    const sendJson = res.json.bind(res);
+    res.json = (payload) => sendJson(sanitizePublicCopy(payload));
+    next();
+  });
   publicRouter.get('/snapshot', asyncRoute(async (req, res) => {
     // One coherent, public-only projection for server rendering and the
     // frontend's durable last-published-content snapshot.
@@ -156,7 +164,7 @@ export function createApp(config, overrides = {}) {
   admin.use((req, res, next) => {
     if (!['GET', 'HEAD', 'OPTIONS'].includes(req.method)) {
       const origin = req.get('origin');
-      if (origin && origin !== config.frontendOrigin) return res.status(403).json({ error: 'Invalid request origin' });
+      if (origin && !allowedOrigins.includes(origin)) return res.status(403).json({ error: 'Invalid request origin' });
     }
     next();
   });
@@ -182,7 +190,7 @@ export function createApp(config, overrides = {}) {
   admin.post('/logout', (req, res, next) => {
     req.session.destroy((error) => {
       if (error) return next(error);
-      res.clearCookie('daggerbone.sid');
+      res.clearCookie('daggerbone.sid', { httpOnly: true, secure: secureCookies, sameSite: secureCookies ? 'none' : 'lax' });
       res.json({ ok: true });
     });
   });

@@ -13,7 +13,7 @@ const targets = [
   [Settings, { key: 'main' }, { tagline: "Men's grooming. Custom scents. An irreverent attitude." }],
   [Page, { key: 'home' }, { intro: "Men's hair, skin, and body care. Three custom scents. Our first collection is in development." }],
   [Page, { key: 'about' }, {
-    intro: "Dagger & Bone Apothecary is a men's grooming brand based in St. Augustine, Florida. Founder Josh is developing the first collection around custom scents and a straightforward approach to looking after yourself.",
+    intro: "Dagger & Bone Apothecary is a men's grooming brand based in St. Augustine, Florida. Our first collection is in development, with custom scents and a straightforward approach to looking after yourself.",
     body: "Somewhere along the way, men's grooming turned into another test of masculinity. We're making hair, skin, and body care.\n\nNobody needs to prove anything to a bottle of conditioner.",
   }],
   [Page, { key: 'contact' }, { intro: 'Questions, press, or collaboration ideas? Send a message.', body: '' }],
